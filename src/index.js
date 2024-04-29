@@ -1,8 +1,8 @@
 
 import { initializeApp } from "firebase/app";
 import {
-  getFirestore, collection, getDocs
-
+  getFirestore, collection, getDocs,
+  addDoc
 
 } from 'firebase/firestore'
 
@@ -41,11 +41,17 @@ getDocs(colRef)
     console.log(err.message)
 });
 
+//add items 
 
 const addProducts = document.querySelector('.add')
 addProducts.addEventListener('submit',(e) =>{
     e.preventDefault()
+
+   addDoc()
+
 })
+
+//delete items 
 
 const deleteProducts = document.querySelector('.delete')
 deleteProducts.addEventListener('submit',(e) =>{
