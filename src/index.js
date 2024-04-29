@@ -31,5 +31,12 @@ const colRef = collection(db, 'Saluni-fashion')
 
 getDocs(colRef)
   .then((snapshot) => {
-    console.log(snapshot.docs)
+    let salunifashion = []
+    snapshot.docs.forEach((doc) => {
+        salunifashion.push({ ...doc.data(),id: doc.id })  
   })
+  console.log(salunifashion)
+})
+.catch((err) => {
+    console.log(err)
+});
