@@ -38,5 +38,5 @@ getDocs(colRef)
   console.log(salunifashion)
 })
 .catch((err) => {
-    console.log(err)
+    console.log(err.message)
 });
