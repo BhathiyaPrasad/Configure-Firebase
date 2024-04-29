@@ -40,3 +40,9 @@ getDocs(colRef)
 .catch((err) => {
     console.log(err.message)
 });
+
+
+const addProducts = document.querySelector('.add')
+addProducts.addEventListener('submit',(e) =>{
+    e.preventDefault()
+})
