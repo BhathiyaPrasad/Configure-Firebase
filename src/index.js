@@ -46,3 +46,8 @@ const addProducts = document.querySelector('.add')
 addProducts.addEventListener('submit',(e) =>{
     e.preventDefault()
 })
+
+const deleteProducts = document.querySelector('.delete')
+deleteProducts.addEventListener('submit',(e) =>{
+    e.preventDefault()
+})
