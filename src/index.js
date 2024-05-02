@@ -80,7 +80,7 @@ deleteProducts.addEventListener('submit',(e) =>{
 
 // get a single document
 
-// const docRef = doc(db, 'saluni-fashion','3kHVyMlEtdtXFTJBs8kC')
+const docRef = doc(db, 'saluni-fashion','3kHVyMlEtdtXFTJBs8kC')
 // getDoc(docRef)
 // .then((doc) => {
 //   console.log(doc.data(), doc.id)
