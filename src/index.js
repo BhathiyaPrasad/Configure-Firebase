@@ -47,7 +47,16 @@ const addProducts = document.querySelector('.add')
 addProducts.addEventListener('submit',(e) =>{
     e.preventDefault()
 
-   addDoc()
+   addDoc(colRef, {
+    Name: addProducts.name.value,
+    Size: addProducts.size.value,
+    Color:addProducts.color.value,
+    Price:addProducts.price.value,
+
+   })
+   .then(() => {
+    addProducts.reset();
+   })
 
 })
 
