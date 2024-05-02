@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import {
   getFirestore, collection, getDocs,
-  addDoc
+  addDoc, deleteDoc, doc
 
 } from 'firebase/firestore'
 
@@ -65,4 +65,11 @@ addProducts.addEventListener('submit',(e) =>{
 const deleteProducts = document.querySelector('.delete')
 deleteProducts.addEventListener('submit',(e) =>{
     e.preventDefault()
+
+  const docRef = doc(db, 'Saluni-fashion', deleteProducts.id.value)
+
+  deleteDoc(docRef)
+  .then(() => {
+  deleteProducts.reset()
+})
 })
