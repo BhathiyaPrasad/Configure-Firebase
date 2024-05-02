@@ -3,7 +3,8 @@ import { initializeApp } from "firebase/app";
 import {
   getFirestore, collection, onSnapshot,
   addDoc, deleteDoc, doc, 
-  query, where
+  query, where,
+  orderBy
 
 } from 'firebase/firestore'
 
@@ -30,7 +31,7 @@ const colRef = collection(db, 'Saluni-fashion')
 
 // queries
 
-const q = query(colRef, where("Name","==","Bhathiya"))
+const q = query(colRef, where("Name","==","Bhathiya"), orderBy('title','ASC'))
 
 // real time collection data
 
