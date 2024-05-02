@@ -31,7 +31,7 @@ const colRef = collection(db, 'Saluni-fashion')
 
 // queries
 
-const q = query(colRef, where("Name","==","Bhathiya"), orderBy('title','ASC'))
+const q = query(colRef, orderBy('Price','desc'))  // , where("Name","==","Bhathiya")
 
 // real time collection data
 
