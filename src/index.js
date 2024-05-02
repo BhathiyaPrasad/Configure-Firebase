@@ -1,7 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import {
-  getFirestore, collection, getDocs,
+  getFirestore, collection, onSnapshot,
   addDoc, deleteDoc, doc
 
 } from 'firebase/firestore'
@@ -27,24 +27,20 @@ const db = getFirestore();
 
 const colRef = collection(db, 'Saluni-fashion')
 
-// get collection data
+// real time collection data
 
-getDocs(colRef)
-  .then((snapshot) => {
-    let salunifashion = []
-    snapshot.docs.forEach((doc) => {
-        salunifashion.push({ ...doc.data(),id: doc.id })  
+onSnapshot(colRef, (snapshot) => {
+  let salunifashion =[]
+  snapshot.docs.forEach((docs) => {
+salunifashion.push({...docs.data(), id: doc.id })
   })
   console.log(salunifashion)
 })
-.catch((err) => {
-    console.log(err.message)
-});
 
 //add items 
 
 const addProducts = document.querySelector('.add')
-addProducts.addEventListener('submit',(e) =>{
+addProducts.addEventListener('submit',(e) => {
     e.preventDefault()
 
    addDoc(colRef, {
