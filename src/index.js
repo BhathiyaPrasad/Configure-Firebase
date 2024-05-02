@@ -4,7 +4,8 @@ import {
   getFirestore, collection, onSnapshot,
   addDoc, deleteDoc, doc, 
   query, where,
-  orderBy, serverTimestamp
+  orderBy, serverTimestamp,
+  getDoc
 
 } from 'firebase/firestore'
 
@@ -75,4 +76,12 @@ deleteProducts.addEventListener('submit',(e) =>{
   .then(() => {
   deleteProducts.reset()
 })
+})
+
+// get a single document
+
+const docRef = doc(db, 'saluni-fashion','3kHVyMlEtdtXFTJBs8kC')
+getDoc(docRef)
+.then((doc) => {
+  console.log(doc.data(), doc.id)
 })
