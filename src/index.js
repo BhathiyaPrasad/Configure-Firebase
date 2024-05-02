@@ -4,7 +4,7 @@ import {
   getFirestore, collection, onSnapshot,
   addDoc, deleteDoc, doc, 
   query, where,
-  orderBy
+  orderBy, serverTimestamp
 
 } from 'firebase/firestore'
 
@@ -54,6 +54,7 @@ addProducts.addEventListener('submit',(e) => {
     Size: addProducts.size.value,
     Color:addProducts.color.value,
     Price:addProducts.price.value,
+    Created: serverTimestamp()
 
    })
    .then(() => {
