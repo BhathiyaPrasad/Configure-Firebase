@@ -2,7 +2,8 @@
 import { initializeApp } from "firebase/app";
 import {
   getFirestore, collection, onSnapshot,
-  addDoc, deleteDoc, doc
+  addDoc, deleteDoc, doc, 
+  query, where
 
 } from 'firebase/firestore'
 
@@ -27,12 +28,16 @@ const db = getFirestore();
 
 const colRef = collection(db, 'Saluni-fashion')
 
+// queries
+
+const q = query(colRef, where("Name","==","Bhathiya"))
+
 // real time collection data
 
-onSnapshot(colRef, (snapshot) => {
+onSnapshot(q, (snapshot) => {
   let salunifashion =[]
   snapshot.docs.forEach((docs) => {
-salunifashion.push({...docs.data(), id: doc.id })
+salunifashion.push({...docs.data(), id: docs.id })
   })
   console.log(salunifashion)
 })
