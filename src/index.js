@@ -7,8 +7,9 @@ import {
   orderBy, serverTimestamp,
   getDoc,
   updateDoc
-
 } from 'firebase/firestore'
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -26,6 +27,7 @@ initializeApp(firebaseConfig);
 // init services
 
 const db = getFirestore();
+const auth = getAuth();
 
 // collection ref 
 
@@ -88,7 +90,7 @@ const docRef = doc(db, 'saluni-fashion','3kHVyMlEtdtXFTJBs8kC')
 // })
 
 onSnapshot(docRef, ()=> {
-  console.log(docRef.data(), doc.id)
+  
 })
 
 
@@ -96,12 +98,33 @@ const updateForm = document.querySelector('.update')
 updateForm.addEventListener('submit', (e) => {
   e.preventDefault()
 
-const docRef = doc(db, 'saluni-fashion', updateForm.id.value)
+const docRef = doc(db, 'Saluni-fashion', updateForm.id.value)
    
     updateDoc(docRef, {
-      title: 'update title'
+      Name: 'update name'
     })
     .then(() => {
       updateForm.reset()
     })
+})
+
+// attach the sign in form
+
+const singupForm = document.querySelector('.signup')
+singupForm = addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const email = singupForm.email.value       //grab the values for email andd password from frontend
+  const password = singupForm.password.value
+  
+  createUserWithEmailAndPassword(auth, email, password )
+.then((cred) => {
+  console.log("User Created:", cred.user) 
+singupForm.reset()
+
+})
+
+.catch((err) => {
+  console.log(err.message)
+})
 })
