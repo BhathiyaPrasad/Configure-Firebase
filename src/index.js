@@ -8,10 +8,12 @@ import {
   getDoc,
   updateDoc
 } from 'firebase/firestore'
-import { getAuth,
-   createUserWithEmailAndPassword,
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
   signOut,
- signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  onAuthStateChanged
 } from "firebase/auth";
 
 
@@ -87,14 +89,14 @@ deleteProducts.addEventListener('submit', (e) => {
 
 // get a single document
 
-const docRef = doc(db, 'Saluni-fashion', '3kHVyMlEtdtXFTJBs8kC')
+const docRef = doc(db, 'Saluni-fashion', 'igXXMo1GOSPv17AOGpx5')
 // getDoc(docRef)
 // .then((doc) => {
 //   console.log(doc.data(), doc.id)
 // })
 
-onSnapshot(docRef, () => {
-
+onSnapshot(docRef, (doc) => {
+  console.log(doc.data(), doc.id)
 })
 
 
@@ -138,13 +140,13 @@ singupForm.addEventListener('submit', (e) => {
 
 const logoutButton = document.querySelector('.logout')
 logoutButton.addEventListener('click', (e) => {
-signOut(auth)
-.then(() => {
-  console.log('User logged out')  
-})
-.catch((err) => {
-  console.log(err.message)
-})
+  signOut(auth)
+    .then(() => {
+      console.log('User logged out')
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
 })
 
 
@@ -153,18 +155,25 @@ signOut(auth)
 
 const loginForm = document.querySelector('.login')
 loginForm.addEventListener('submit', (e) => {
-e.preventDefault()
-const  email = loginForm.email.value
-const password = loginForm.password.value
+  e.preventDefault()
+  const email = loginForm.email.value
+  const password = loginForm.password.value
 
 
-signInWithEmailAndPassword(auth, email, password)
-.then((cred) => {
- console.log("User Logged In:", cred.user) 
+  signInWithEmailAndPassword(auth, email, password)
+    .then((cred) => {
+      console.log("User Logged In:", cred.user)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+
+
 })
-.catch((err) => { 
-  console.log(err.message)
+
+// subscribing to auth changes
+
+onAuthStateChanged(auth, (user) => {
+    console.log('User Status Changed:', user.email) 
 })
 
-
-})
