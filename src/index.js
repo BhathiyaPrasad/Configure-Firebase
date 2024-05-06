@@ -138,3 +138,11 @@ loginForm.addEventListener('submit', () => {
 
 
 })
+
+// attach the log  out button 
+
+const logout = document.querySelector('.logout')
+logout.addEventListener('click', (e) => {
+e.preventDefault()
+
+})
