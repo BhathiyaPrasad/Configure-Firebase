@@ -10,7 +10,9 @@ import {
 } from 'firebase/firestore'
 import { getAuth,
    createUserWithEmailAndPassword,
-  signOut } from "firebase/auth";
+  signOut,
+ signInWithEmailAndPassword
+} from "firebase/auth";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -131,17 +133,8 @@ singupForm.addEventListener('submit', (e) => {
     })
 })
 
-// attache the log in from
-
-const loginForm = document.querySelector('.login')
-loginForm.addEventListener('submit', () => {
-  e.preventDefault()
-
-
-
-})
-
 // attach the log  out button 
+
 
 const logoutButton = document.querySelector('.logout')
 logoutButton.addEventListener('click', (e) => {
@@ -152,5 +145,26 @@ signOut(auth)
 .catch((err) => {
   console.log(err.message)
 })
+})
+
+
+
+// attache the log in from
+
+const loginForm = document.querySelector('.login')
+loginForm.addEventListener('submit', (e) => {
+e.preventDefault()
+const  email = loginForm.email.value
+const password = loginForm.password.value
+
+
+signInWithEmailAndPassword(auth, email, password)
+.then((cred) => {
+ console.log("User Logged In:", cred.user) 
+})
+.catch((err) => { 
+  console.log(err.message)
+})
+
 
 })
