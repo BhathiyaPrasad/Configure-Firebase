@@ -8,7 +8,9 @@ import {
   getDoc,
   updateDoc
 } from 'firebase/firestore'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth,
+   createUserWithEmailAndPassword,
+  signOut } from "firebase/auth";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -141,8 +143,14 @@ loginForm.addEventListener('submit', () => {
 
 // attach the log  out button 
 
-const logout = document.querySelector('.logout')
-logout.addEventListener('click', (e) => {
-e.preventDefault()
+const logoutButton = document.querySelector('.logout')
+logoutButton.addEventListener('click', (e) => {
+signOut(auth)
+.then(() => {
+  console.log('User logged out')  
+})
+.catch((err) => {
+  console.log(err.message)
+})
 
 })
