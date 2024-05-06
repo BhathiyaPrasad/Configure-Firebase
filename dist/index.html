@@ -1,150 +1,146 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firebase </title>
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
 
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 20px;
-  color: #333;
-}
+      /* Style for the main heading */
+      h1 {
+        color: #0d6efd;
+        text-align: center;
+      }
 
-/* Style for the main heading */
-h1 {
-  color: #0d6efd;
-  text-align: center;
-}
+      /* Style for the secondary headings */
+      h2 {
+        color: #6c757d;
+        text-align: center;
+      }
 
-/* Style for the secondary headings */
-h2 {
-  color: #6c757d;
-  text-align: center;
-}
+      /* General form styling */
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
 
-/* General form styling */
-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
+      /* Flex container for form elements */
+      .form-group {
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+      }
 
-/* Flex container for form elements */
-.form-group {
-  display: flex;
-  margin-bottom: 10px;
-  align-items: center;
-}
+      /* Style for labels */
+      label {
+        flex: 1;
+        padding-right: 10px;
+        font-weight: bold;
+      }
 
-/* Style for labels */
-label {
-  flex: 1;
-  padding-right: 10px;
-  font-weight: bold;
-}
+      /* Style for input fields */
+      input {
+        flex: 2;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+      }
 
-/* Style for input fields */
-input {
-  flex: 2;
-  padding: 10px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-}
+      /* Style for buttons */
+      button {
+        background-color: #0d6efd;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
 
-/* Style for buttons */
-button {
-  background-color: #0d6efd;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+      button:hover {
+        background-color: #0b5ed7;
+      }
 
-button:hover {
-  background-color: #0b5ed7;
-}
+      /* Responsive design for smaller screens */
+      @media (max-width: 768px) {
+        .form-group {
+          flex-direction: column;
+        }
 
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-  .form-group {
-    flex-direction: column;
-  }
+        label {
+          padding-right: 0;
+          padding-bottom: 5px;
+        }
 
-  label {
-    padding-right: 0;
-    padding-bottom: 5px;
-  }
+        input {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Firebase Configuration</h1>
 
-  input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-}
+    <h2>Firebase Firestore</h2>
 
-  </style>
-</head>
-<body>
-  <h1>Firebase Configuration</h1>
+    <form class="add">
+      <label for="title">NAME</label>
+      <input type="text" name="name" required />
+      <label for="author">SIZE</label>
+      <input type="text" name="size" required />
+      <label for="author">COLOR</label>
+      <input type="text" name="color" required />
+      <label for="author">PRICE</label>
+      <input type="number" name="price" required />
 
-  <h2>Firebase Firestore</h2>
+      <button>ADD PRODUCTS</button>
+    </form>
+    <br />
 
-  <form class="add">
-    <label for="title">NAME</label>
-    <input type="text" name="name" required>
-    <label for="author">SIZE</label>
-    <input type="text" name="size" required>
-    <label for="author">COLOR</label>
-    <input type="text" name="color" required>
-    <label for="author">PRICE</label>
-    <input type="number" name="price" required>
-    
-     <button>ADD PRODUCTS</button>
-  </form>
- <br>
+    <form class="update">
+      <label for="id">DOCUMENT ID:</label>
+      <input type="text" name="id" required />
 
-  
-<form class="update">
-  <label for="id">DOCUMENT ID:</label>
-  <input type="text" name="id" required>
+      <button>UPDATE</button>
+    </form>
+    <br />
 
-  <Button>UPDATE</Button>
-</form>
-<br>
+    <form class="delete">
+      <label for="id">DOCUMENT ID:</label>
+      <input type="text" name="id" required />
 
-  <form class="delete">
-    <label for="id">DOCUMENT ID:</label>
-    <input type="text" name="id" required>
+      <button>DELETE</button>
+    </form>
 
-    <button>DELETE</button>
-  </form>
+    <h2>Firebase Authentication</h2>
 
+    <form class="signup">
+      <label for="email">Email:</label>
+      <input type="email" name="email" />
+      <label for="password">Password</label>
+      <input type="password" name="password" />
+      <button>SignUp</button>
+    </form>
+    <br />
+    <form class="login">
+      <label for="email">Email:</label>
+      <input type="email" name="email" />
+      <label for="password">Password</label>
+      <input type="password" name="password" />
+      <button>Login</button>
+    </form>
 
-<h2>Firebase Authentication</h2>
-
-<form class="signup">
-<label for="email">Email:</label>
-<input type="email" name="email">
-<label for="password">Password</label>
-<input type="password" name="password">
-<button>SignUp</button>
-</form>
-<br>
-<form class="login">
-<label for="email">Email:</label>
-<input type="email" name="email">
-<label for="password">Password</label>
-<input type="password" name="password">
-<button>Login</button>
-</form>
-
-  <script src="bundle.js"></script>
-</body>
+    <script src="bundle.js"></script>
+  </body>
 </html>
