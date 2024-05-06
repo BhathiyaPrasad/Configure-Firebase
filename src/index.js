@@ -83,7 +83,7 @@ deleteProducts.addEventListener('submit', (e) => {
 
 // get a single document
 
-const docRef = doc(db, 'saluni-fashion', '3kHVyMlEtdtXFTJBs8kC')
+const docRef = doc(db, 'Saluni-fashion', '3kHVyMlEtdtXFTJBs8kC')
 // getDoc(docRef)
 // .then((doc) => {
 //   console.log(doc.data(), doc.id)
@@ -111,7 +111,7 @@ updateForm.addEventListener('submit', (e) => {
 // attach the sign in form
 
 const singupForm = document.querySelector('.signup')
-singupForm = addEventListener('submit', (e) => {
+singupForm.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const email = singupForm.email.value       //grab the values for email andd password from frontend
@@ -127,4 +127,14 @@ singupForm = addEventListener('submit', (e) => {
     .catch((err) => {
       console.log(err.message)
     })
+})
+
+// attache the log in from
+
+const loginForm = document.querySelector('.login')
+loginForm.addEventListener('submit', () => {
+  e.preventDefault()
+
+
+
 })
