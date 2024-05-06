@@ -119,7 +119,7 @@ singupForm = addEventListener('submit', (e) => {
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((cred) => {
-      console.log("User Created:", cred.user)
+      console.log("User Created:", cred.user)     // you must change permission in ( authentication -> settings -> Authorized domains ) Type your local or hosted domain here
       singupForm.reset()
 
     })
